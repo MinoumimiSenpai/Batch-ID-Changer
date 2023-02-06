@@ -1,0 +1,39 @@
+@echo off
+echo See https://github.com/mhvuze/MonsterHunterRiseModding/wiki/Armor-IDs for reference
+echo.
+echo ONLY INPUT THE ARMOR ID (ie. pl123 = 123)
+
+set pl=natives\STM\player\mod\f\
+for /f "delims=" %%a in ('dir /b %pl%') do set "cid=%%a"
+
+echo Current Armor ID = %cid%
+echo.
+set /p nid=Input new Armor ID: 
+
+cd %pl%
+ren %cid% "pl%nid%" >nul 2>nul
+cd pl%nid%
+for /r %%x in (f_helm*.*) do ren "%%x" f_helm%nid%*.* >nul 2>nul
+for /r %%x in (f_body*.*) do ren "%%x" f_body%nid%*.* >nul 2>nul
+for /r %%x in (f_arm*.*) do ren "%%x" f_arm%nid%*.* >nul 2>nul
+for /r %%x in (f_wst*.*) do ren "%%x" f_wst%nid%*.* >nul 2>nul
+for /r %%x in (f_leg*.*) do ren "%%x" f_leg%nid%*.* >nul 2>nul
+
+cls
+echo. Armor ID change completed.
+echo. Files Renamed:
+echo.
+dir /l /b /p
+
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo shitty batch file made by GHN
+timeout /t 5
+exit
+pau
