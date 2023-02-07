@@ -1,0 +1,19 @@
+@echo off
+echo only ID numbers
+set /p cur=Input current armor ID: 
+set /p id=Input new Armor ID: 
+SET var=%cd%
+
+cd
+ren "pl%cur%" "pl%id%"
+cd pl%id%
+ren f_arm* f_arm%id%*.*
+ren f_body* f_body%id%*.*
+ren f_leg* f_leg%id%*.*
+ren f_wst* f_wst%id%*.*
+ren f_helm* f_helm%id%*.*
+
+
+echo DONE!
+timeout /t 1
+exit
